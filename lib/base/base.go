@@ -12,6 +12,7 @@
 package base
 
 import (
+	"bytes"
 	"encoding/json"
 	"errors"
 	"fmt"
@@ -138,9 +139,157 @@ func (b *Base) QueryBase(query string, v *url.Values, inst interface{}) error {
 // Query the mapbox API
 // TODO: Depreciate this
 func (b *Base) Query(api, version, mode, query string, v *url.Values, inst interface{}) error {
-
 	// Generate URL
 	queryString := fmt.Sprintf("%s/%s/%s/%s", api, version, mode, query)
 
 	return b.QueryBase(queryString, v, inst)
+}
+
+// QueryWithBody makes a POST request with JSON body and returns the response
+func (b *Base) QueryWithBody(api, version, mode, query string, v *url.Values, body interface{}, inst interface{}) error {
+	// Add token to args
+	v.Set("access_token", b.token)
+
+	// Generate URL
+	queryString := fmt.Sprintf("%s/%s/%s/%s", api, version, mode, query)
+	url := fmt.Sprintf("%s/%s", BaseURL, queryString)
+
+	if b.debug {
+		fmt.Printf("URL: %s\n", url)
+	}
+
+	// Marshal body to JSON
+	jsonBody, err := json.Marshal(body)
+	if err != nil {
+		return err
+	}
+
+	// Create request object
+	request, err := http.NewRequest(http.MethodPost, url, bytes.NewBuffer(jsonBody))
+	if err != nil {
+		return err
+	}
+	request.Header.Set("Content-Type", "application/json")
+	request.URL.RawQuery = v.Encode()
+
+	// Create client instance
+	client := &http.Client{}
+
+	resp, err := client.Do(request)
+	if err != nil {
+		return err
+	}
+	defer resp.Body.Close()
+
+	if b.debug {
+		data, _ := httputil.DumpRequest(request, true)
+		fmt.Printf("Request: %s", string(data))
+		data, _ = httputil.DumpResponse(resp, false)
+		fmt.Printf("Response: %s", string(data))
+	}
+
+	if resp.StatusCode == statusRateLimitExceeded {
+		return ErrorAPILimitExceeded
+	}
+	if resp.StatusCode == http.StatusUnauthorized {
+		return ErrorAPIUnauthorized
+	}
+
+	// Read body into buffer
+	responseBody, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		return err
+	}
+
+	// Handle bad requests with messages
+	if resp.StatusCode == http.StatusBadRequest {
+		apiMessage := MapboxApiMessage{}
+		messageErr := json.Unmarshal(responseBody, &apiMessage)
+		if messageErr == nil {
+			return fmt.Errorf("api error: %s", apiMessage.Message)
+		}
+		return fmt.Errorf("Bad Request (400) - no message")
+	}
+
+	// Attempt to decode body into inst type
+	err = json.Unmarshal(responseBody, &inst)
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// QueryWithBodyBase makes a POST request with JSON body using the direct query string format
+func (b *Base) QueryWithBodyBase(queryString string, v *url.Values, body interface{}, inst interface{}) error {
+	// Add token to args
+	v.Set("access_token", b.token)
+
+	// Generate URL
+	url := fmt.Sprintf("%s/%s", BaseURL, queryString)
+
+	if b.debug {
+		fmt.Printf("URL: %s\n", url)
+	}
+
+	// Marshal body to JSON
+	jsonBody, err := json.Marshal(body)
+	if err != nil {
+		return err
+	}
+
+	// Create request object
+	request, err := http.NewRequest(http.MethodPost, url, bytes.NewBuffer(jsonBody))
+	if err != nil {
+		return err
+	}
+	request.Header.Set("Content-Type", "application/json")
+	request.URL.RawQuery = v.Encode()
+
+	// Create client instance
+	client := &http.Client{}
+
+	resp, err := client.Do(request)
+	if err != nil {
+		return err
+	}
+	defer resp.Body.Close()
+
+	if b.debug {
+		data, _ := httputil.DumpRequest(request, true)
+		fmt.Printf("Request: %s", string(data))
+		data, _ = httputil.DumpResponse(resp, false)
+		fmt.Printf("Response: %s", string(data))
+	}
+
+	if resp.StatusCode == statusRateLimitExceeded {
+		return ErrorAPILimitExceeded
+	}
+	if resp.StatusCode == http.StatusUnauthorized {
+		return ErrorAPIUnauthorized
+	}
+
+	// Read body into buffer
+	responseBody, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		return err
+	}
+
+	// Handle bad requests with messages
+	if resp.StatusCode == http.StatusBadRequest {
+		apiMessage := MapboxApiMessage{}
+		messageErr := json.Unmarshal(responseBody, &apiMessage)
+		if messageErr == nil {
+			return fmt.Errorf("api error: %s", apiMessage.Message)
+		}
+		return fmt.Errorf("Bad Request (400) - no message")
+	}
+
+	// Attempt to decode body into inst type
+	err = json.Unmarshal(responseBody, &inst)
+	if err != nil {
+		return err
+	}
+
+	return nil
 }
