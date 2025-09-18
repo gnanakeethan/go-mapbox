@@ -7,12 +7,12 @@ import (
 
 // Import the core module and any required APIs
 import (
-	"github.com/ryankurte/go-mapbox/lib/base"
-	"github.com/ryankurte/go-mapbox/lib/directions"
-	"github.com/ryankurte/go-mapbox/lib/directions_matrix"
-	"github.com/ryankurte/go-mapbox/lib/geocode"
-	"github.com/ryankurte/go-mapbox/lib/map_matching"
-	"github.com/ryankurte/go-mapbox/lib/maps"
+	"github.com/gnanakeethan/go-mapbox/lib/base"
+	"github.com/gnanakeethan/go-mapbox/lib/directions"
+	"github.com/gnanakeethan/go-mapbox/lib/directions_matrix"
+	"github.com/gnanakeethan/go-mapbox/lib/geocode"
+	"github.com/gnanakeethan/go-mapbox/lib/map_matching"
+	"github.com/gnanakeethan/go-mapbox/lib/maps"
 )
 
 func TestMaps(t *testing.T) {

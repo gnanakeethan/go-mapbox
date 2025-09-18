@@ -4,7 +4,9 @@
  * See https://www.mapbox.com/api-documentation/#retrieve-a-match for API information
  *
  * https://github.com/ryankurte/go-mapbox
- * Copyright 2017 Ryan Kurte
+ * https://github.com/gnanakeethan/go-mapbox
+ * Copyright 2017-2025 Ryan Kurte
+ * Copyright 2025 Gnanakeethan Balasubramaniam
  */
 
 package mapmatching
@@ -13,8 +15,8 @@ import (
 	"fmt"
 	"strings"
 
+	"github.com/gnanakeethan/go-mapbox/lib/base"
 	"github.com/google/go-querystring/query"
-	"github.com/ryankurte/go-mapbox/lib/base"
 )
 
 const (

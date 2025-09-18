@@ -2,8 +2,8 @@
 
 Mapbox API wrappers for Golang
 
-[![Documentation](https://img.shields.io/badge/docs-godoc-blue.svg)](https://godoc.org/github.com/ryankurte/go-mapbox/lib)
-[![GitHub tag](https://img.shields.io/github/tag/ryankurte/go-mapbox.svg)](https://github.com/ryankurte/go-mapbox)
+[![Documentation](https://img.shields.io/badge/docs-godoc-blue.svg)](https://godoc.org/github.com/gnanakeethan/go-mapbox/lib)
+[![GitHub tag](https://img.shields.io/github/tag/ryankurte/go-mapbox.svg)](https://github.com/gnanakeethan/go-mapbox)
 [![Build Status](https://travis-ci.org/ryankurte/go-mapbox.svg?branch=master)](https://travis-ci.org/ryankurte/go-mapbox)
 
 See [here](https://golanglibs.com/top?q=mapbox) for other golang/mapbox projects.
@@ -12,7 +12,7 @@ See [here](https://golanglibs.com/top?q=mapbox) for other golang/mapbox projects
 
 Very early WIP, pull requests and issues are most welcome. See [lib/geocode/](lib/geocode) or [lib/directions/](lib/directions) for an example module to mimic.
 
-Because Travis-CI does not expose the build environment to untrusted branches (ie. Pull Requests) tests have to be manually prompted by a repository admin then force merged. Don't panic when your local tests pass but travis fails with "Mapbox API token not found", we will manually run them as soon as possible. See issue [#10](https://github.com/ryankurte/go-mapbox/issues/10) for more information.
+Because Travis-CI does not expose the build environment to untrusted branches (ie. Pull Requests) tests have to be manually prompted by a repository admin then force merged. Don't panic when your local tests pass but travis fails with "Mapbox API token not found", we will manually run them as soon as possible. See issue [#10](https://github.com/gnanakeethan/go-mapbox/issues/10) for more information.
 
 ### Modules
 

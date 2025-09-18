@@ -4,7 +4,9 @@
  * See https://www.mapbox.com/api-documentation/#retrieve-a-match for API information
  *
  * https://github.com/ryankurte/go-mapbox
- * Copyright 2017 Ryan Kurte
+ * https://github.com/gnanakeethan/go-mapbox
+ * Copyright 2017-2025 Ryan Kurte
+ * Copyright 2025 Gnanakeethan Balasubramaniam
  */
 
 package mapmatching
@@ -92,7 +94,7 @@ func (m *Matchings) GetGeometryPolyline() (string, error) {
 	return g, nil
 }
 
-//MatchingLeg legs inside the matching object
+// MatchingLeg legs inside the matching object
 type MatchingLeg struct {
 	Step     []float64
 	Summary  string

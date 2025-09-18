@@ -4,7 +4,9 @@
  * Run: go test -v  -run ^TestTiles$ && open /tmp/mapbox-tile-test-*.jpg
  *
  * https://github.com/ryankurte/go-mapbox
- * Copyright 2017 Ryan Kurte
+ * https://github.com/gnanakeethan/go-mapbox
+ * Copyright 2017-2025 Ryan Kurte
+ * Copyright 2025 Gnanakeethan Balasubramaniam
  */
 
 package maps
@@ -16,7 +18,7 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
-	"github.com/ryankurte/go-mapbox/lib/base"
+	"github.com/gnanakeethan/go-mapbox/lib/base"
 )
 
 func TestTiles(t *testing.T) {

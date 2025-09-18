@@ -4,7 +4,9 @@
  * See https://www.mapbox.com/api-documentation/#retrieve-a-matrix for API information
  *
  * https://github.com/ryankurte/go-mapbox
- * Copyright 2017 Ryan Kurte
+ * https://github.com/gnanakeethan/go-mapbox
+ * Copyright 2017-2025 Ryan Kurte
+ * Copyright 2025 Gnanakeethan Balasubramaniam
  */
 
 package directionsmatrix
@@ -15,7 +17,7 @@ import (
 )
 
 import (
-	"github.com/ryankurte/go-mapbox/lib/base"
+	"github.com/gnanakeethan/go-mapbox/lib/base"
 )
 
 func TestDirectionsMatrix(t *testing.T) {

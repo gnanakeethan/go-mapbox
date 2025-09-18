@@ -4,18 +4,20 @@
  * See https://www.mapbox.com/api-documentation/for API information
  *
  * https://github.com/ryankurte/go-mapbox
- * Copyright 2017 Ryan Kurte
+ * https://github.com/gnanakeethan/go-mapbox
+ * Copyright 2017-2025 Ryan Kurte
+ * Copyright 2025 Gnanakeethan Balasubramaniam
  */
 
 package mapbox
 
 import (
-	"github.com/ryankurte/go-mapbox/lib/base"
-	"github.com/ryankurte/go-mapbox/lib/directions"
-	"github.com/ryankurte/go-mapbox/lib/directions_matrix"
-	"github.com/ryankurte/go-mapbox/lib/geocode"
-	"github.com/ryankurte/go-mapbox/lib/map_matching"
-	"github.com/ryankurte/go-mapbox/lib/maps"
+	"github.com/gnanakeethan/go-mapbox/lib/base"
+	"github.com/gnanakeethan/go-mapbox/lib/directions"
+	"github.com/gnanakeethan/go-mapbox/lib/directions_matrix"
+	"github.com/gnanakeethan/go-mapbox/lib/geocode"
+	"github.com/gnanakeethan/go-mapbox/lib/map_matching"
+	"github.com/gnanakeethan/go-mapbox/lib/maps"
 )
 
 // Mapbox API Wrapper structure

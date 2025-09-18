@@ -5,3 +5,4 @@ setenv.sh
 *.svg
 *.json
 coverage.txt
+.idea

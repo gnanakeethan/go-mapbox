@@ -4,7 +4,9 @@
  * See https://www.mapbox.com/api-documentation/#retrieve-directions for API information
  *
  * https://github.com/ryankurte/go-mapbox
- * Copyright 2017 Ryan Kurte
+ * https://github.com/gnanakeethan/go-mapbox
+ * Copyright 2017-2025 Ryan Kurte
+ * Copyright 2025 Gnanakeethan Balasubramaniam
  */
 
 package directions
@@ -89,7 +91,7 @@ type Intersection struct {
 }
 
 // Lane
-//https://www.mapbox.com/api-documentation/#lane-object
+// https://www.mapbox.com/api-documentation/#lane-object
 type Lane struct {
 	Valid      bool
 	Indicatons []string
